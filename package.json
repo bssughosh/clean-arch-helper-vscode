@@ -17,7 +17,7 @@
 		"commands": [
 			{
 				"command": "clean-arch-helper.newFlutterFeature",
-				"title": "CAH: New Flutter Clean Architecture"
+				"title": "CAH Flutter"
 			}
 		]
 	},
