@@ -25,7 +25,7 @@
 				{
 					"command": "clean-arch-helper.newFlutterFeature",
 					"when": "dart-code:anyProjectLoaded",
-					"group": "g1"
+					"group": "scripts"
 				}
 			]
 		}

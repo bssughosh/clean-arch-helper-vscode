@@ -2,6 +2,17 @@
 
 An extension (for VSCODE) to help generate the minimal code to be used while implementing clean architecture.
 
+
+## How to setup
+
+1. Clone this repository in extensions folder in .vscode directory (Usually in $HOME/.vscode/extenstions)
+2. Inside this directory run
+```bash
+npm install
+npm run compile
+```
+3. Reload the window (vscode) to see the changes in the extensions and then the extension should work.
+
 ## Features
 
 1. newFlutterFeature (CAH: New Flutter Clean Architecture)
