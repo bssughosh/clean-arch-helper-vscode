@@ -2,7 +2,7 @@
 	"name": "clean-arch-helper",
 	"displayName": "clean_arch_helper",
 	"description": "An extension to help generate the minimal code to be used while implementing clean architecture.",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"engines": {
 		"vscode": "^1.62.0"
 	},
