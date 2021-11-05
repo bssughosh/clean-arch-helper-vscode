@@ -3,16 +3,16 @@ import path = require("path");
 import { getFlutterDataLayerCodeTemplate } from "../code_generator_templates/flutter/flutter_data_layer_template";
 import { getFlutterDomainLayerCodeTemplate } from "../code_generator_templates/flutter/flutter_domain_layer_template";
 import { getFlutterControllerCodeTemplate, getFlutterPresenterCodeTemplate, getFlutterStateMachineCodeTemplate, getFlutterViewCodeTemplate } from "../code_generator_templates/flutter/flutter_presentation_layer_template";
-import { FeatureType } from "../utils/enums";
+import { FlutterFeatureType } from "../utils/enums";
 
 export const generateFlutterCode = (
     featureClassName: string,
 	snakeCaseFeatureName: string,
 	targetDirectory: string,
-	type: FeatureType,
+	type: FlutterFeatureType,
 ): void => {
     const targetPath = `${targetDirectory}/${snakeCaseFeatureName}`
-	if (type == FeatureType.full) {
+	if (type == FlutterFeatureType.full) {
 		generateDataLayerCode(`${targetPath}/data/repository`, featureClassName, snakeCaseFeatureName);
 		generateDomainLayerCode(`${targetPath}/domain/repository/`, featureClassName, snakeCaseFeatureName);
 		generatePresentationLayerCode(`${targetPath}/presentation`, featureClassName, snakeCaseFeatureName);

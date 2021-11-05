@@ -4,7 +4,7 @@ import { promptForTargetDirectory } from "../utils/directoryInputDialog";
 import { promptForTextInput } from "../utils/textInputDialog";
 import * as _ from "lodash";
 import { promptForOptionsInput } from "../utils/optionInputDialog";
-import { FeatureType } from "../utils/enums";
+import { FlutterFeatureType } from "../utils/enums";
 import { snakeCase, titleCase } from "../utils/stringOperations";
 import { generateFlutterCode } from "./codeGenerator";
 import { generateFlutterDirectories } from "./directoriesGenerator";
@@ -30,14 +30,14 @@ export const newFlutterFeatureOrchestrator = async (uri: Uri) => {
     }
 
     // Feature type [full, presentation]
-    const rawFeatureType: string | undefined = await promptForOptionsInput([FeatureType.full, FeatureType.presentation], "Select a feature type");
+    const rawFeatureType: string | undefined = await promptForOptionsInput([FlutterFeatureType.full, FlutterFeatureType.presentation], "Select a feature type");
 
     if (rawFeatureType == undefined) {
         window.showErrorMessage("The feature type must be selected");
         return;
     }
 
-    const featureType: FeatureType = FeatureType[rawFeatureType as keyof typeof FeatureType]
+    const featureType: FlutterFeatureType = FlutterFeatureType[rawFeatureType as keyof typeof FlutterFeatureType]
 
     const featureClassName = titleCase(featureName)
     const snakeCaseFeatureName = snakeCase(featureName);

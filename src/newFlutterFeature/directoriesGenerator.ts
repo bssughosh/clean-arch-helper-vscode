@@ -1,13 +1,13 @@
 import * as _ from "lodash";
 import * as mkdirp from "mkdirp";
 import { existsSync } from "fs";
-import { FeatureType } from "../utils/enums";
+import { FlutterFeatureType } from "../utils/enums";
 
 
 export const generateFlutterDirectories = async (
     snakeCaseFeatureName: string,
     targetDirectory: string,
-    type: FeatureType,
+    type: FlutterFeatureType,
 ): Promise<void> => {
     const targetPath = `${targetDirectory}/${snakeCaseFeatureName}`
     const dataPath1 = `${targetPath}/data/mapper`
@@ -17,7 +17,7 @@ export const generateFlutterDirectories = async (
     const domainPath3 = `${targetPath}/domain/repository`
     const presentationPath = `${targetPath}/presentation`
 
-    if (type == FeatureType.full) {
+    if (type == FlutterFeatureType.full) {
         // Main dir
         if (!existsSync(targetDirectory)) {
             await mkdirp(targetDirectory);
