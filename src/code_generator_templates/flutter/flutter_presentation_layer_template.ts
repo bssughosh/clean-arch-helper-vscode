@@ -17,19 +17,42 @@ export function getFlutterStateMachineCodeTemplate(featureClassName: string): st
       
         @override
         State? getStateOnEvent(Event event) {
-          // State? newState;
-          // switch (event.runtimeType) {
-          // }
-          //return newState;
-          throw UnimplementedError();
+          State? newState;
+          switch (event.runtimeType) {
+            case ${featureClassName}PageInitializedEvent:
+              newState = ${featureClassName}PageInitializedState();
+              break;
+
+            case ${featureClassName}PageLoadingEvent:
+              newState = ${featureClassName}PageLoadingState();
+              break;
+
+            case ${featureClassName}PageErrorEvent:
+              newState = ${featureClassName}PageErrorState();
+              break;
+
+          }
+          return newState;
         }
       }
       
       class ${featureClassName}State {}
       
       class ${featureClassName}PageInitializationState extends ${featureClassName}State {}
+
+      class ${featureClassName}PageInitializedState extends ${featureClassName}State {}
+
+      class ${featureClassName}PageLoadingState extends ${featureClassName}State {}
+
+      class ${featureClassName}PageErrorState extends ${featureClassName}State {}
       
-      class ${featureClassName}Event {}`;
+      class ${featureClassName}Event {}
+      
+      class ${featureClassName}PageInitializedEvent extends ${featureClassName}Event {}
+
+      class ${featureClassName}PageLoadingEvent extends ${featureClassName}Event {}
+
+      class ${featureClassName}PageErrorEvent extends ${featureClassName}Event {}`;
 
     return template;
 };
@@ -93,6 +116,18 @@ export function getFlutterViewCodeTemplate(featureClassName: string, snakeCaseFe
         case ${featureClassName}PageInitializationState:
           // return buildInitializationStateViewWeb();
           throw UnimplementedError();
+
+        case ${featureClassName}PageInitializedState:
+          // return buildInitializedtateViewWeb();
+          throw UnimplementedError();
+
+        case ${featureClassName}PageLoadingState:
+          // return buildLoadingStateViewWeb();
+          throw UnimplementedError();
+
+        case ${featureClassName}PageErrorState:
+          // return buildErrorStateViewWeb();
+          throw UnimplementedError();
       }
       throw Exception("Unrecognized state $currentStateType encountered");
     });
@@ -109,6 +144,18 @@ export function getFlutterViewCodeTemplate(featureClassName: string, snakeCaseFe
       switch (currentStateType) {
         case ${featureClassName}PageInitializationState:
           // return buildInitializationStateViewMobile();
+          throw UnimplementedError();
+
+        case ${featureClassName}PageInitializedState:
+          // return buildInitializedtateViewMobile();
+          throw UnimplementedError();
+
+        case ${featureClassName}PageLoadingState:
+          // return buildLoadingStateViewMobile();
+          throw UnimplementedError();
+
+        case ${featureClassName}PageErrorState:
+          // return buildErrorStateViewMobile();
           throw UnimplementedError();
       }
       throw Exception("Unrecognized state $currentStateType encountered");
