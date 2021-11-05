@@ -19,16 +19,16 @@
 				"command": "clean-arch-helper.newFlutterFeature",
 				"title": "CAH Flutter"
 			}
-		]
-	},
-	"menus": {
-		"touchBar": [
-			{
-				"command": "clean-arch-helper.newFlutterFeature",
-				"when": "dart-code:anyProjectLoaded",
-				"group": "newFeature"
-			}
-		]
+		],
+		"menus": {
+			"touchBar": [
+				{
+					"command": "clean-arch-helper.newFlutterFeature",
+					"when": "dart-code:anyProjectLoaded",
+					"group": "g1"
+				}
+			]
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
