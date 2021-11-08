@@ -18,6 +18,10 @@
 			{
 				"command": "clean-arch-helper.newFlutterFeature",
 				"title": "CAH Flutter"
+			},
+			{
+				"command": "clean-arch-helper.newTSFeature",
+				"title": "CAH TS"
 			}
 		],
 		"menus": {

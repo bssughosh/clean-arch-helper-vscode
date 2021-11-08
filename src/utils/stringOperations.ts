@@ -4,6 +4,10 @@ export const pascalCase = (str: string): string => {
     return changeCase.pascalCase(str.toLowerCase());
 };
 
+export const camelCase = (str: string): string =>{
+    return changeCase.camelCase(str.toLowerCase());
+}
+
 export const snakeCase = (str: string): string => {
     return changeCase.snakeCase(str.toLowerCase());
 };
