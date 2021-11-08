@@ -8,11 +8,13 @@ import { snakeCase, titleCase } from "../utils/stringOperations";
 import { generateTSDirectories } from "./directoriesGenerator";
 import { TSFeatureType } from "../utils/enums";
 import { generateTSCode } from "./codeGenerator";
+import { pascalCase } from "pascal-case";
+import { camelCase } from "camel-case";
 
 export const newTSFeatureOrchestrator = async (uri: Uri) => {
 
     // Get feature name
-    const featureName = await promptForTextInput("Name", "counter");
+    const featureName = await promptForTextInput("Example Name", "student operations");
     if (_.isNil(featureName) || featureName.trim() === "") {
         window.showErrorMessage("The feature name must not be empty");
         return;
@@ -40,8 +42,8 @@ export const newTSFeatureOrchestrator = async (uri: Uri) => {
 
     const featureType: TSFeatureType = TSFeatureType[rawFeatureType as keyof typeof TSFeatureType]
 
-    const featureClassName = titleCase(featureName)
-    const snakeCaseFeatureName = snakeCase(featureName);
+    const featureClassName = pascalCase(featureName)
+    const snakeCaseFeatureName = camelCase(featureName);
 
     try {
         await generateTSDirectories(snakeCaseFeatureName, targetDirectory, featureType);
