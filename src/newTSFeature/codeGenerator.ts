@@ -1,9 +1,8 @@
-import { existsSync, writeFile } from "fs";
-import path = require("path");
 import { getTSDataLayerRepositoryCodeTemplate } from "../code_generator_templates/ts/ts_data_layer_template";
 import { getTSDomainLayerCodeTemplate } from "../code_generator_templates/ts/ts_domain_layer_template";
 import { getTSDeserializerCodeTemplate, getTSOrchestratorCodeTemplate, getTSSerializerCodeTemplate } from "../code_generator_templates/ts/ts_gateway_layer_template";
 import { TSFeatureType } from "../utils/enums";
+import { writeDataToFile } from "../utils/writeDataToFile";
 
 export const generateTSCode = (
 
@@ -44,6 +43,8 @@ function generateDataLayerCode(
 		`${snakeCaseFeatureName}RepositoryImpl.ts`,
 		getTSDataLayerRepositoryCodeTemplate(featureClassName, snakeCaseFeatureName)
 	);
+
+	
 }
 
 
@@ -86,15 +87,3 @@ function generateGateWayLayerCode(
 }
 
 
-function writeDataToFile(targetDirectory: string, fileName: string, dataToWrite: string) {
-	const filePath = path.join(`${targetDirectory}`, fileName)
-	if (existsSync(filePath)) {
-		throw Error(`${fileName} already exists`);
-	}
-
-	writeFile(
-		filePath,
-		dataToWrite,
-		function () { },
-	);
-}

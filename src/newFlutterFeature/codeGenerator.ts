@@ -1,9 +1,8 @@
-import { existsSync, writeFile } from "fs";
-import path = require("path");
 import { getFlutterDataLayerCodeTemplate } from "../code_generator_templates/flutter/flutter_data_layer_template";
 import { getFlutterDomainLayerCodeTemplate } from "../code_generator_templates/flutter/flutter_domain_layer_template";
 import { getFlutterControllerCodeTemplate, getFlutterPresenterCodeTemplate, getFlutterStateMachineCodeTemplate, getFlutterViewCodeTemplate } from "../code_generator_templates/flutter/flutter_presentation_layer_template";
 import { FlutterFeatureType } from "../utils/enums";
+import { writeDataToFile } from "../utils/writeDataToFile";
 
 export const generateFlutterCode = (
     featureClassName: string,
@@ -69,19 +68,5 @@ function generatePresentationLayerCode(
 		targetDirectory,
 		`${snakeCaseFeatureName}_state_machine.dart`,
 		getFlutterStateMachineCodeTemplate(featureClassName)
-	);
-}
-
-
-function writeDataToFile(targetDirectory: string, fileName: string, dataToWrite: string) {
-	const filePath = path.join(`${targetDirectory}`, fileName)
-	if (existsSync(filePath)) {
-		throw Error(`${fileName} already exists`);
-	}
-
-	writeFile(
-		filePath,
-		dataToWrite,
-		function () { },
 	);
 }
