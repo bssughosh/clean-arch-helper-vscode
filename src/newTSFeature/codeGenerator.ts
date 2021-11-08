@@ -15,7 +15,7 @@ export const generateTSCode = (
 ): void => {
 
 
-	if (type == TSFeatureType.NEW_OPERATION) {
+	if (type === TSFeatureType.NEW_OPERATION) {
 
         const targetPath = `${targetDirectory}/${snakeCaseFeatureName}`
 
@@ -24,7 +24,7 @@ export const generateTSCode = (
 
 		generateDomainLayerCode(`${targetPath}/domain/repository/`, featureClassName,snakeCaseFeatureName);
 
-	} else {
+	} else if(type === TSFeatureType.EXISTING_OPERATION) {
 
         const targetPath = `${targetDirectory}/gateway/${snakeCaseFeatureName}`
 

@@ -49,15 +49,15 @@ export const generateTSDirectories = async (
 
     }
 
-    else{
+    else if(type === TSFeatureType.EXISTING_OPERATION){
 
         //target Directory would start from an existing file in src Eg : src/studentOperations
 
 
         const targetPath = `${targetDirectory}/gateway/${snakeCaseFeatureName}`
 
-        if (!existsSync(targetDirectory)) {
-            await mkdirp(targetDirectory);
+        if (!existsSync(targetPath)) {
+            await mkdirp(targetPath);
         }
 
 
