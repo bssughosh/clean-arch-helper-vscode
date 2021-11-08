@@ -7,7 +7,9 @@ export function getTSDataLayerRepositoryCodeTemplate(
     const template = `
     
 import {  inject, injectable } from "inversify";
-import { ${featureClassName}Repository } from "../../domain/repository/${snakeCaseFeatureName}sRepository";
+import { ${featureClassName}Repository } from "../../domain/repository/${snakeCaseFeatureName}Repository";
+import { ${featureClassName}FirestoreWrapper } from "./${snakeCaseFeatureName}FirestoreWrapper";
+
 
 
 @injectable()
@@ -16,7 +18,7 @@ export class ${featureClassName}RepositoryImpl implements ${featureClassName}Rep
 
     constructor(
 
-        //@inject(${featureClassName}FirestoreWrapper) private readonly ${snakeCaseFeatureName}FirestoreWrapper: ${featureClassName}FirestoreWrapper,
+        @inject(${featureClassName}FirestoreWrapper) private readonly ${snakeCaseFeatureName}FirestoreWrapper: ${featureClassName}FirestoreWrapper,
 
     ) { }
 
