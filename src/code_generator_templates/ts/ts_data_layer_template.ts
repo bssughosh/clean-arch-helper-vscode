@@ -25,3 +25,30 @@ export class ${featureClassName}RepositoryImpl implements ${featureClassName}Rep
 
     return template;
 };
+
+
+
+
+
+export function getTSDataLayerFirestoreWrapperCodeTemplate(
+    featureClassName: string,
+): string {
+    
+    const template = `
+    
+import { inject, injectable } from "inversify";
+import { ConfigWrapper } from "../../../Config";
+    
+@injectable()
+export class ${featureClassName}FirestoreWrapper {
+    
+    constructor(
+        @inject('ConfigWrapper') private readonly config: ConfigWrapper
+    ) { }
+    
+
+}`;
+
+return template;
+
+};

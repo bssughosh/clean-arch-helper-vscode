@@ -1,4 +1,4 @@
-import { getTSDataLayerRepositoryCodeTemplate } from "../code_generator_templates/ts/ts_data_layer_template";
+import { getTSDataLayerFirestoreWrapperCodeTemplate, getTSDataLayerRepositoryCodeTemplate } from "../code_generator_templates/ts/ts_data_layer_template";
 import { getTSDomainLayerCodeTemplate } from "../code_generator_templates/ts/ts_domain_layer_template";
 import { getTSDeserializerCodeTemplate, getTSOrchestratorCodeTemplate, getTSSerializerCodeTemplate } from "../code_generator_templates/ts/ts_gateway_layer_template";
 import { TSFeatureType } from "../utils/enums";
@@ -44,7 +44,11 @@ function generateDataLayerCode(
 		getTSDataLayerRepositoryCodeTemplate(featureClassName, snakeCaseFeatureName)
 	);
 
-	
+	writeDataToFile(
+		targetDirectory,
+		`${snakeCaseFeatureName}FirestoreWrapper.ts`,
+		getTSDataLayerFirestoreWrapperCodeTemplate(featureClassName)
+	)
 }
 
 
