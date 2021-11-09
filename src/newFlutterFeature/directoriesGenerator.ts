@@ -18,6 +18,9 @@ export const generateFlutterDirectories = async (
     const presentationPath = `${targetPath}/presentation`
 
     if (type == FlutterFeatureType.full) {
+        const mobileViewPath = `${targetPath}/presentation/mobile`
+        const desktopViewPath = `${targetPath}/presentation/desktop`
+
         // Main dir
         if (!existsSync(targetDirectory)) {
             await mkdirp(targetDirectory);
@@ -30,9 +33,16 @@ export const generateFlutterDirectories = async (
         await mkdirp(domainPath2);
         await mkdirp(domainPath3);
         await mkdirp(presentationPath);
+        await mkdirp(mobileViewPath);
+        await mkdirp(desktopViewPath);
     } else {
+        const mobileViewPath = `${targetPath}/mobile`
+        const desktopViewPath = `${targetPath}/desktop`
         if (!existsSync(targetPath)) {
             await mkdirp(targetPath);
         }
+
+        await mkdirp(mobileViewPath);
+        await mkdirp(desktopViewPath);
     }
 };
