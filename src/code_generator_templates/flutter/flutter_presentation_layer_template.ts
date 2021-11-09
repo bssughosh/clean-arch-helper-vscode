@@ -94,6 +94,14 @@ export function getFlutterViewCodeTemplate(featureClassName: string, snakeCaseFe
     const template = `import 'package:flutter/material.dart';
     import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 
+    import 'desktop/error_view_web.dart';
+    import 'desktop/initialization_view_web.dart';
+    import 'desktop/initialized_view_web.dart';
+    import 'desktop/loading_view_web.dart';
+    import 'mobile/error_view_mobile.dart';
+    import 'mobile/initialization_view_mobile.dart';
+    import 'mobile/initialized_view_mobile.dart';
+    import 'mobile/loading_view_mobile.dart';
     import '${snakeCaseFeatureName}_controller.dart';
     import '${snakeCaseFeatureName}_state_machine.dart';
 
@@ -116,20 +124,16 @@ export function getFlutterViewCodeTemplate(featureClassName: string, snakeCaseFe
 
       switch (currentStateType) {
         case ${featureClassName}PageInitializationState:
-          // return buildInitializationStateViewWeb();
-          throw UnimplementedError();
+          return buildInitializationStateViewWeb();
 
         case ${featureClassName}PageInitializedState:
-          // return buildInitializedtateViewWeb();
-          throw UnimplementedError();
+          return buildInitializedStateViewWeb();
 
         case ${featureClassName}PageLoadingState:
-          // return buildLoadingStateViewWeb();
-          throw UnimplementedError();
+          return buildLoadingStateViewWeb();
 
         case ${featureClassName}PageErrorState:
-          // return buildErrorStateViewWeb();
-          throw UnimplementedError();
+          return buildErrorStateViewWeb();
       }
       throw Exception("Unrecognized state $currentStateType encountered");
     });
@@ -145,20 +149,16 @@ export function getFlutterViewCodeTemplate(featureClassName: string, snakeCaseFe
 
       switch (currentStateType) {
         case ${featureClassName}PageInitializationState:
-          // return buildInitializationStateViewMobile();
-          throw UnimplementedError();
+          return buildInitializationStateViewMobile();
 
         case ${featureClassName}PageInitializedState:
-          // return buildInitializedtateViewMobile();
-          throw UnimplementedError();
+          return buildInitializedStateViewMobile();
 
         case ${featureClassName}PageLoadingState:
-          // return buildLoadingStateViewMobile();
-          throw UnimplementedError();
+          return buildLoadingStateViewMobile();
 
         case ${featureClassName}PageErrorState:
-          // return buildErrorStateViewMobile();
-          throw UnimplementedError();
+          return buildErrorStateViewMobile();
       }
       throw Exception("Unrecognized state $currentStateType encountered");
     });
@@ -176,7 +176,7 @@ export function getFlutterViewCodeTemplate(featureClassName: string, snakeCaseFe
 export function getFlutterDeviceViewCodeTemplate(state: FlutterState, deviceType: DeviceType): string {
   const template = `import 'package:flutter/material.dart';
 
-  Widget build${state}View${deviceType}() {
+  Widget build${state}StateView${deviceType}() {
     throw UnimplementedError();
   }
   `;
