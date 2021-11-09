@@ -1,3 +1,5 @@
+import { DeviceType, FlutterState } from "../../utils/enums";
+
 export function getFlutterPresenterCodeTemplate(featureClassName: string): string {
     const template = `import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 
@@ -106,7 +108,7 @@ export function getFlutterViewCodeTemplate(featureClassName: string, snakeCaseFe
     @override
     Widget get desktopView => ControlledWidgetBuilder<${featureClassName}PageController>(
         builder: (context, controller) {
-      final currentState = controller.getCurrentState();
+      // final currentState = controller.getCurrentState();
       final currentStateType = controller.getCurrentState().runtimeType;
       UtilitiesWrapper.print(
           "buildDesktopView called with state $currentStateType",
@@ -135,7 +137,7 @@ export function getFlutterViewCodeTemplate(featureClassName: string, snakeCaseFe
     @override
     Widget get mobileView => ControlledWidgetBuilder<${featureClassName}PageController>(
         builder: (context, controller) {
-      final currentState = controller.getCurrentState();
+      // final currentState = controller.getCurrentState();
       final currentStateType = controller.getCurrentState().runtimeType;
       UtilitiesWrapper.print(
           "buildMobileView called with state $currentStateType",
@@ -170,3 +172,14 @@ export function getFlutterViewCodeTemplate(featureClassName: string, snakeCaseFe
 
     return template;
 };
+
+export function getFlutterDeviceViewCodeTemplate(state: FlutterState, deviceType: DeviceType): string {
+  const template = `import 'package:flutter/material.dart';
+
+  Widget build${state}View${deviceType}() {
+    throw UnimplementedError();
+  }
+  `;
+
+  return template;
+}
