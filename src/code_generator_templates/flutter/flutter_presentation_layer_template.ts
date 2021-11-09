@@ -17,7 +17,7 @@ export function getFlutterStateMachineCodeTemplate(featureClassName: string): st
       
         @override
         ${featureClassName}State? getStateOnEvent(${featureClassName}Event event) {
-          State? newState;
+          ${featureClassName}State? newState;
           switch (event.runtimeType) {
             case ${featureClassName}PageInitializedEvent:
               newState = ${featureClassName}PageInitializedState();
