@@ -33,7 +33,7 @@
 				},
 				{
 					"command": "clean-arch-helper.newTSFeature",
-					"when": "onLanguage:typescript",
+					"when": "resourceLangId == typescript",
 					"group": "scripts"
 				}
 			]
