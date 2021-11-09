@@ -30,6 +30,11 @@
 					"command": "clean-arch-helper.newFlutterFeature",
 					"when": "dart-code:anyProjectLoaded",
 					"group": "scripts"
+				},
+				{
+					"command": "clean-arch-helper.newTSFeature",
+					"when": "onLanguage:typescript",
+					"group": "scripts"
 				}
 			]
 		}
