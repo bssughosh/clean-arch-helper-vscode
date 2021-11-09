@@ -12,11 +12,11 @@ export function getFlutterPresenterCodeTemplate(featureClassName: string): strin
 };
 
 export function getFlutterStateMachineCodeTemplate(featureClassName: string): string {
-    const template = `class ${featureClassName}PageStateMachine extends StateMachine<State?, Event> {
+    const template = `class ${featureClassName}PageStateMachine extends StateMachine<${featureClassName}State?, ${featureClassName}Event> {
         ${featureClassName}PageStateMachine() : super(${featureClassName}PageInitializationState());
       
         @override
-        State? getStateOnEvent(Event event) {
+        ${featureClassName}State? getStateOnEvent(${featureClassName}Event event) {
           State? newState;
           switch (event.runtimeType) {
             case ${featureClassName}PageInitializedEvent:
