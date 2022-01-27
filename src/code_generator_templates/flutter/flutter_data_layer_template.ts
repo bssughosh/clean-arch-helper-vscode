@@ -4,7 +4,7 @@ export function getFlutterDataLayerCodeTemplate(
 ): string {
     const template = `import '../../domain/repository/${snakeCaseFeatureName}_repository.dart';
         
-    class ${featureClassName}RepositoryImpl extends ${featureClassName}Repository {}`;
+class ${featureClassName}RepositoryImpl extends ${featureClassName}Repository {}`;
 
     return template;
 };
