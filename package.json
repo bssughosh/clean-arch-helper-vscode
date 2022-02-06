@@ -22,6 +22,10 @@
 			{
 				"command": "clean-arch-helper.newTSFeature",
 				"title": "CAH TS"
+			},
+			{
+				"command": "clean-arch-helper.newReactComponent",
+				"title": "New React Component"
 			}
 		],
 		"menus": {
@@ -34,6 +38,11 @@
 				{
 					"command": "clean-arch-helper.newTSFeature",
 					"when": "resourceLangId == typescript",
+					"group": "scripts"
+				},
+				{
+					"command":  "clean-arch-helper.newReactComponent",
+					"when": "onLanguage:jsx",
 					"group": "scripts"
 				}
 			]
