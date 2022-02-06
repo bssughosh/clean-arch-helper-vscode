@@ -1,7 +1,9 @@
 import { DeviceType, FlutterState } from "../../utils/enums";
 
-export function getFlutterPresenterCodeTemplate(featureClassName: string): string {
-    const template = `import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
+export function getFlutterPresenterCodeTemplate(
+  featureClassName: string
+): string {
+  const template = `import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 
 class ${featureClassName}PagePresenter extends Presenter {
     ${featureClassName}PagePresenter();
@@ -10,11 +12,13 @@ class ${featureClassName}PagePresenter extends Presenter {
   dispose() { }
 }`;
 
-    return template;
-};
+  return template;
+}
 
-export function getFlutterStateMachineCodeTemplate(featureClassName: string): string {
-    const template = `class ${featureClassName}PageStateMachine extends StateMachine<${featureClassName}State?, ${featureClassName}Event> {
+export function getFlutterStateMachineCodeTemplate(
+  featureClassName: string
+): string {
+  const template = `class ${featureClassName}PageStateMachine extends StateMachine<${featureClassName}State?, ${featureClassName}Event> {
   ${featureClassName}PageStateMachine() : super(${featureClassName}PageInitializationState());
 
   @override
@@ -56,11 +60,14 @@ class ${featureClassName}PageLoadingEvent extends ${featureClassName}Event {}
 
 class ${featureClassName}PageErrorEvent extends ${featureClassName}Event {}`;
 
-    return template;
-};
+  return template;
+}
 
-export function getFlutterControllerCodeTemplate(featureClassName: string, snakeCaseFeatureName: string): string {
-    const template = `import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
+export function getFlutterControllerCodeTemplate(
+  featureClassName: string,
+  snakeCaseFeatureName: string
+): string {
+  const template = `import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 
 import '${snakeCaseFeatureName}_presenter.dart';
 import '${snakeCaseFeatureName}_state_machine.dart';
@@ -87,11 +94,14 @@ class ${featureClassName}PageController extends Controller {
   }
 }`;
 
-    return template;
-};
+  return template;
+}
 
-export function getFlutterViewCodeTemplate(featureClassName: string, snakeCaseFeatureName: string): string {
-    const template = `import 'package:flutter/material.dart';
+export function getFlutterViewCodeTemplate(
+  featureClassName: string,
+  snakeCaseFeatureName: string
+): string {
+  const template = `import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 
 import 'desktop/error_view_web.dart';
@@ -120,7 +130,7 @@ Widget get desktopView => ControlledWidgetBuilder<${featureClassName}PageControl
   final currentStateType = controller.getCurrentState().runtimeType;
   UtilitiesWrapper.print(
       "buildDesktopView called with state $currentStateType",
-      name: runtimeType);
+      name: ${featureClassName}Page);
 
   switch (currentStateType) {
     case ${featureClassName}PageInitializationState:
@@ -145,7 +155,7 @@ Widget get mobileView => ControlledWidgetBuilder<${featureClassName}PageControll
   final currentStateType = controller.getCurrentState().runtimeType;
   UtilitiesWrapper.print(
       "buildMobileView called with state $currentStateType",
-      name: runtimeType);
+      name: ${featureClassName}Page);
 
   switch (currentStateType) {
     case ${featureClassName}PageInitializationState:
@@ -170,10 +180,13 @@ Widget get tabletView => mobileView;
 Widget get watchView => throw UnimplementedError();
 }`;
 
-    return template;
-};
+  return template;
+}
 
-export function getFlutterDeviceViewCodeTemplate(state: FlutterState, deviceType: DeviceType): string {
+export function getFlutterDeviceViewCodeTemplate(
+  state: FlutterState,
+  deviceType: DeviceType
+): string {
   const template = `import 'package:flutter/material.dart';
 
 Widget build${state}StateView${deviceType}() {
