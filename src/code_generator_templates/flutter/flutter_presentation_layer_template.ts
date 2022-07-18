@@ -75,7 +75,7 @@ import '${snakeCaseFeatureName}_state_machine.dart';
 class ${featureClassName}PageController extends Controller {
   final ${featureClassName}PagePresenter _presenter;
   final ${featureClassName}PageStateMachine _stateMachine = new ${featureClassName}PageStateMachine();
-  // final _navigationService = serviceLocator<NavigationService>();
+  // final AppRouter _appRouter = serviceLocator<AppRouter>();
   ${featureClassName}PageController()
       : _presenter = serviceLocator<${featureClassName}PagePresenter>(),
         super();
@@ -130,7 +130,7 @@ Widget get desktopView => ControlledWidgetBuilder<${featureClassName}PageControl
   final currentStateType = controller.getCurrentState().runtimeType;
   UtilitiesWrapper.print(
       "buildDesktopView called with state $currentStateType",
-      name: ${featureClassName}Page);
+      name: "${featureClassName}Page");
 
   switch (currentStateType) {
     case ${featureClassName}PageInitializationState:
@@ -155,7 +155,7 @@ Widget get mobileView => ControlledWidgetBuilder<${featureClassName}PageControll
   final currentStateType = controller.getCurrentState().runtimeType;
   UtilitiesWrapper.print(
       "buildMobileView called with state $currentStateType",
-      name: ${featureClassName}Page);
+      name: "${featureClassName}Page");
 
   switch (currentStateType) {
     case ${featureClassName}PageInitializationState:
