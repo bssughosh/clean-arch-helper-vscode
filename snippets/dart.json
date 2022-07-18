@@ -1,0 +1,106 @@
+{
+    "CleanArchitectureController": {
+        "prefix": "fcacontroller",
+        "body": [
+            "import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';",
+            "class $1PageController extends Controller {",
+            "\tfinal $1PagePresenter _presenter;",
+            "\tfinal $1PageStateMachine _stateMachine = new $1PageStateMachine();",
+            "\tfinal AppRouter _appRouter = serviceLocator<AppRouter>();",
+            "\t$1PageController()",
+            "\t\t\t: _presenter = serviceLocator<$1PagePresenter>(),",
+            "\t\t\t super();",
+            "\n\t@override",
+            "\tvoid initListeners() {}",
+            "\n\t@override",
+            "\tvoid onInitState() {",
+            "\t\tsuper.onInitState();",
+            "\t}",
+            "\n\t@override",
+            "\tvoid onDisposed() {",
+            "\t\t_presenter.dispose();",
+            "\t\tsuper.onDisposed();",
+            "\t}",
+            "\n\t$1State getCurrentState() {",
+            "\t\treturn _stateMachine.getCurrentState()!;",
+            "\t}",
+            "}"
+        ]
+    },
+    "CleanArchitecturePresenter": {
+        "prefix": "fcapresenter",
+        "body": [
+            "import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';",
+            "class $1PagePresenter extends Presenter {",
+            "\t$1PagePresenter();",
+            "\n\t@override",
+            "\tdispose() {",
+            "\t}",
+            "}"
+        ]
+    },
+    "CleanArchitectureView": {
+        "prefix": "fcaview",
+        "body": [
+            "import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';",
+            "class $1Page extends View {",
+            "\t@override",
+            "\tState<StatefulWidget> createState() => $1ViewState();",
+            "}",
+            "class $1ViewState extends ResponsiveViewState<$1Page, $1PageController> {",
+            "\t$1ViewState() : super(new $1PageController());",
+            "\n\t@override",
+            "\tWidget get desktopView => throw UnimplementedError();",
+            "\n\t@override",
+            "\tWidget get mobileView => throw UnimplementedError();",
+            "\n\t@override",
+            "\tWidget get tabletView => throw UnimplementedError();",
+            "\n\t@override",
+            "\tWidget get watchView => throw UnimplementedError();",
+            "}"
+        ]
+    },
+    "CleanArchitectureStateMachine": {
+        "prefix": "fcastatemachine",
+        "body": [
+            "class $1PageStateMachine extends StateMachine<$1State?, $1Event> {",
+            "\t$1PageStateMachine() : super($1PageInitializationState());",
+            "\n\t@override",
+            "\t$1State? getStateOnEvent($1Event event) {",
+            "\t\t// $1State? newState;",
+            "\t\t// switch (event.runtimeType) {",
+            "\t\t// }",
+            "\t\t//return newState;",
+            "\t\tthrow UnimplementedError();",
+            "\t}",
+            "}",
+            "\nclass $1State {}",
+            "\nclass $1PageInitializationState extends $1State {}",
+            "\nclass $1Event {}"
+        ]
+    },
+    "CleanArchitectureUsecase": {
+        "prefix": "fcausecase",
+        "body": [
+            "import 'dart:async';",
+            "\nimport 'package:flutter_clean_architecture/flutter_clean_architecture.dart';",
+            "\nclass $1Usecase extends CompletableUseCase<$1Params> {",
+            "\t@override",
+            "\tFuture<Stream<void>> buildUseCaseStream($1Params? params) async {",
+            "\t\tfinal StreamController<void> streamController = StreamController();",
+            "\t\ttry{",
+            "\t\t\t//TODO: Call the repository function",
+            "\t\t\tUtilitiesWrapper.print('', name: '$runtimeType');",
+            "\t\t\tstreamController.close();",
+            "\t\t} catch (error, stack) {",
+            "\t\t\tUtilitiesWrapper.print(': $$error', name: '$runtimeType', isError: true);",
+            "\t\t\tApplicationTracker.reportError(error, stack: stack);",
+            "\t\t\tstreamController.addError(error);",
+            "\t\t}",
+            "\n\t\treturn streamController.stream;",
+            "\t}",
+            "}",
+            "\nclass $1Params {}"
+        ]
+    }
+}
